@@ -132,14 +132,7 @@
             font-weight: 600;
         }
         .stat-icon {
-            font-size: 28px;
-            width: 50px;
-            height: 50px;
-            background: #fff9ed;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: none;
         }
         .stat-value {
             font-size: 30px;
@@ -198,7 +191,7 @@
         }
         .inventory-toolbar {
             display: grid;
-            grid-template-columns: 1fr auto auto auto;
+            grid-template-columns: 1fr auto auto;
             gap: 15px;
             margin-bottom: 20px;
         }
@@ -230,18 +223,8 @@
         .data-table tr:hover { background: #f8f9fa; }
         .product-info {
             display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .product-thumb {
-            width: 50px;
-            height: 50px;
-            background: #f0f0f0;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+            flex-direction: column;
+            gap: 4px;
         }
         .status-badge {
             padding: 5px 12px;
@@ -254,15 +237,6 @@
         .status-low { background: #fff3cd; color: #856404; }
         .status-critical { background: #f8d7da; color: #721c24; }
         .status-restocking { background: #d1ecf1; color: #0c5460; }
-        .location-chip {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 999px;
-            background: #f3f4f6;
-            font-size: 12px;
-            font-weight: 600;
-            color: #555;
-        }
         .action-btns {
             display: flex;
             gap: 8px;
@@ -400,11 +374,11 @@
             <ul class="sidebar-menu">
                 <li><a href="Admin Dashboard.html"><span class="menu-icon">📊</span> Dashboard</a></li>
                 <li><a href="Product Management - FurryNeeds Admin.html"><span class="menu-icon">📦</span> Products</a></li>
-                <li><a href="#"><span class="menu-icon">🛒</span> Orders</a></li>
-                <li><a href="#"><span class="menu-icon">👥</span> Customers</a></li>
+                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/2d1203d8-1be2-43a1-8ea2-fb430570e98a/admin-reports.html#"><span class="menu-icon">🛒</span> Orders</a></li>
+                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/2d1203d8-1be2-43a1-8ea2-fb430570e98a/admin-reports.html#"><span class="menu-icon">👥</span> Customers</a></li>
                 <li><a href="Sales Reports - FurryNeeds Admin.html"><span class="menu-icon">📈</span> Reports</a></li>
                 <li><a href="Inventory.html" class="active"><span class="menu-icon">📋</span> Inventory</a></li>
-                <li><a href="#"><span class="menu-icon">⚙️</span> Settings</a></li>
+                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/2d1203d8-1be2-43a1-8ea2-fb430570e98a/admin-reports.html#"><span class="menu-icon">⚙️</span> Settings</a></li>
             </ul>
         </aside>
 
@@ -424,7 +398,6 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-title">Total SKUs</div>
-                        <div class="stat-icon">📦</div>
                     </div>
                     <div class="stat-value" id="totalSkus">128</div>
                     <div class="stat-change">+6 new items this month</div>
@@ -432,7 +405,6 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-title">Units In Stock</div>
-                        <div class="stat-icon">🏪</div>
                     </div>
                     <div class="stat-value" id="totalUnits">1,284</div>
                     <div class="stat-change">Inventory holding steady</div>
@@ -440,7 +412,6 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-title">Low Stock Items</div>
-                        <div class="stat-icon">⚠️</div>
                     </div>
                     <div class="stat-value" id="lowStockCount">4</div>
                     <div class="stat-change warning">Needs attention today</div>
@@ -448,7 +419,6 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-title">Out Of Stock</div>
-                        <div class="stat-icon">🚫</div>
                     </div>
                     <div class="stat-value" id="outStockCount">1</div>
                     <div class="stat-change negative">1 item missing from shelf</div>
@@ -492,13 +462,6 @@
                         <option value="Critical">Critical</option>
                         <option value="Restocking">Restocking</option>
                     </select>
-                    <select class="filter-select" id="locationFilter">
-                        <option value="all">All Locations</option>
-                        <option value="Main Warehouse">Main Warehouse</option>
-                        <option value="Aisle B">Aisle B</option>
-                        <option value="Cold Storage">Cold Storage</option>
-                        <option value="Backroom Shelf">Backroom Shelf</option>
-                    </select>
                 </div>
 
                 <table class="data-table" id="inventoryTable">
@@ -509,16 +472,14 @@
                             <th>Available</th>
                             <th>Reorder Level</th>
                             <th>Status</th>
-                            <th>Location</th>
                             <th>Last Updated</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-name="Premium Grain-Free Dog Food" data-sku="DGF-001" data-category="Dog Food" data-status="In Stock" data-location="Main Warehouse" data-stock="45">
+                        <tr data-name="Premium Grain-Free Dog Food" data-sku="DGF-001" data-category="Dog Food" data-status="In Stock" data-stock="45">
                             <td>
                                 <div class="product-info">
-                                    <div class="product-thumb">🍖</div>
                                     <div>
                                         <div style="font-weight: 600;">Premium Grain-Free Dog Food</div>
                                         <div style="font-size: 12px; color: #999;">SKU: DGF-001</div>
@@ -529,7 +490,6 @@
                             <td>45 units</td>
                             <td>20 units</td>
                             <td><span class="status-badge status-in">In Stock</span></td>
-                            <td><span class="location-chip">Main Warehouse</span></td>
                             <td>March 22, 2026</td>
                             <td>
                                 <div class="action-btns">
@@ -538,10 +498,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr data-name="Interactive Squeaky Toy Set" data-sku="DGT-015" data-category="Dog Toys" data-status="Low Stock" data-location="Aisle B" data-stock="12">
+                        <tr data-name="Interactive Squeaky Toy Set" data-sku="DGT-015" data-category="Dog Toys" data-status="Low Stock" data-stock="12">
                             <td>
                                 <div class="product-info">
-                                    <div class="product-thumb">🧸</div>
                                     <div>
                                         <div style="font-weight: 600;">Interactive Squeaky Toy Set</div>
                                         <div style="font-size: 12px; color: #999;">SKU: DGT-015</div>
@@ -552,7 +511,6 @@
                             <td>12 units</td>
                             <td>20 units</td>
                             <td><span class="status-badge status-low">Low Stock</span></td>
-                            <td><span class="location-chip">Aisle B</span></td>
                             <td>March 21, 2026</td>
                             <td>
                                 <div class="action-btns">
@@ -561,10 +519,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr data-name="Natural Dental Chew Sticks" data-sku="DGT-028" data-category="Dog Treats" data-status="In Stock" data-location="Main Warehouse" data-stock="67">
+                        <tr data-name="Natural Dental Chew Sticks" data-sku="DGT-028" data-category="Dog Treats" data-status="In Stock" data-stock="67">
                             <td>
                                 <div class="product-info">
-                                    <div class="product-thumb">🦴</div>
                                     <div>
                                         <div style="font-weight: 600;">Natural Dental Chew Sticks</div>
                                         <div style="font-size: 12px; color: #999;">SKU: DGT-028</div>
@@ -575,7 +532,6 @@
                             <td>67 units</td>
                             <td>25 units</td>
                             <td><span class="status-badge status-in">In Stock</span></td>
-                            <td><span class="location-chip">Main Warehouse</span></td>
                             <td>March 20, 2026</td>
                             <td>
                                 <div class="action-btns">
@@ -584,10 +540,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr data-name="Premium Cat Litter 20lb" data-sku="CAT-042" data-category="Cat Care" data-status="Critical" data-location="Backroom Shelf" data-stock="8">
+                        <tr data-name="Premium Cat Litter 20lb" data-sku="CAT-042" data-category="Cat Care" data-status="Critical" data-stock="8">
                             <td>
                                 <div class="product-info">
-                                    <div class="product-thumb">🐱</div>
                                     <div>
                                         <div style="font-weight: 600;">Premium Cat Litter 20lb</div>
                                         <div style="font-size: 12px; color: #999;">SKU: CAT-042</div>
@@ -598,7 +553,6 @@
                             <td>8 units</td>
                             <td>15 units</td>
                             <td><span class="status-badge status-critical">Critical</span></td>
-                            <td><span class="location-chip">Backroom Shelf</span></td>
                             <td>March 22, 2026</td>
                             <td>
                                 <div class="action-btns">
@@ -607,10 +561,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr data-name="Vitamin Supplements for Dogs" data-sku="HLT-011" data-category="Healthcare" data-status="Critical" data-location="Cold Storage" data-stock="3">
+                        <tr data-name="Vitamin Supplements for Dogs" data-sku="HLT-011" data-category="Healthcare" data-status="Critical" data-stock="3">
                             <td>
                                 <div class="product-info">
-                                    <div class="product-thumb">💊</div>
                                     <div>
                                         <div style="font-weight: 600;">Vitamin Supplements for Dogs</div>
                                         <div style="font-size: 12px; color: #999;">SKU: HLT-011</div>
@@ -621,7 +574,6 @@
                             <td>3 units</td>
                             <td>10 units</td>
                             <td><span class="status-badge status-critical">Critical</span></td>
-                            <td><span class="location-chip">Cold Storage</span></td>
                             <td>March 22, 2026</td>
                             <td>
                                 <div class="action-btns">
@@ -630,10 +582,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr data-name="Orthopedic Dog Bed" data-sku="DGA-073" data-category="Dog Accessories" data-status="Restocking" data-location="Main Warehouse" data-stock="0">
+                        <tr data-name="Orthopedic Dog Bed" data-sku="DGA-073" data-category="Dog Accessories" data-status="Restocking" data-stock="0">
                             <td>
                                 <div class="product-info">
-                                    <div class="product-thumb">🛏️</div>
                                     <div>
                                         <div style="font-weight: 600;">Orthopedic Dog Bed</div>
                                         <div style="font-size: 12px; color: #999;">SKU: DGA-073</div>
@@ -644,7 +595,6 @@
                             <td>0 units</td>
                             <td>12 units</td>
                             <td><span class="status-badge status-restocking">Restocking</span></td>
-                            <td><span class="location-chip">Main Warehouse</span></td>
                             <td>March 19, 2026</td>
                             <td>
                                 <div class="action-btns">
@@ -774,7 +724,6 @@
         const searchInput = document.getElementById('searchInput');
         const categoryFilter = document.getElementById('categoryFilter');
         const statusFilter = document.getElementById('statusFilter');
-        const locationFilter = document.getElementById('locationFilter');
         const inventoryRows = Array.from(document.querySelectorAll('#inventoryTable tbody tr'));
         const emptyState = document.getElementById('emptyState');
         const restockModal = document.getElementById('restockModal');
@@ -787,7 +736,6 @@
             const searchTerm = searchInput.value.trim().toLowerCase();
             const categoryValue = categoryFilter.value;
             const statusValue = statusFilter.value;
-            const locationValue = locationFilter.value;
             let visibleCount = 0;
 
             inventoryRows.forEach((row) => {
@@ -795,14 +743,10 @@
                 const sku = row.dataset.sku.toLowerCase();
                 const category = row.dataset.category;
                 const status = row.dataset.status;
-                const location = row.dataset.location;
-
                 const matchesSearch = name.includes(searchTerm) || sku.includes(searchTerm);
                 const matchesCategory = categoryValue === 'all' || category === categoryValue;
                 const matchesStatus = statusValue === 'all' || status === statusValue;
-                const matchesLocation = locationValue === 'all' || location === locationValue;
-
-                const visible = matchesSearch && matchesCategory && matchesStatus && matchesLocation;
+                const visible = matchesSearch && matchesCategory && matchesStatus;
                 row.style.display = visible ? '' : 'none';
                 if (visible) visibleCount += 1;
             });
@@ -846,7 +790,7 @@
             alert('Inventory CSV export started.');
         });
 
-        [searchInput, categoryFilter, statusFilter, locationFilter].forEach((control) => {
+        [searchInput, categoryFilter, statusFilter].forEach((control) => {
             control.addEventListener('input', filterInventory);
             control.addEventListener('change', filterInventory);
         });
