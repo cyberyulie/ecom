@@ -111,20 +111,10 @@
             border-left: 4px solid #FDCA5D;
         }
         .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 15px;
         }
         .stat-icon {
-            font-size: 32px;
-            width: 50px;
-            height: 50px;
-            background: #fff9ed;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: none;
         }
         .stat-title {
             color: #666;
@@ -265,10 +255,10 @@
     <!-- Header -->
     <div class="admin-header">
         <div class="header-content">
-            <div class="logo">🐾 FurryNeeds Admin</div>
+            <div class="logo">FurryNeeds Admin</div>
             <div class="admin-user">
                 <span>Admin User</span>
-                <div class="user-avatar">👤</div>
+                <div class="user-avatar">A</div>
                 <button class="btn btn-secondary" onclick="window.location.href='login.html';" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">Logout</button> 
             </div>
         </div>
@@ -281,11 +271,11 @@
             <ul class="sidebar-menu">
                 <li><a href="Admin Dashboard.html" class="active"><span class="menu-icon">📊</span> Dashboard</a></li>
                 <li><a href="Product Management - FurryNeeds Admin.html"><span class="menu-icon">📦</span> Products</a></li>
-                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/1e2e1826-31f9-4944-a2fd-4c288b977797/admin-dashboard.html#orders"><span class="menu-icon">🛒</span> Orders</a></li>
-                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/1e2e1826-31f9-4944-a2fd-4c288b977797/admin-dashboard.html#customers"><span class="menu-icon">👥</span> Customers</a></li>
+                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/2d1203d8-1be2-43a1-8ea2-fb430570e98a/admin-reports.html#"><span class="menu-icon">🛒</span> Orders</a></li>
+                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/2d1203d8-1be2-43a1-8ea2-fb430570e98a/admin-reports.html#"><span class="menu-icon">👥</span> Customers</a></li>
                 <li><a href="Sales Reports - FurryNeeds Admin.html"><span class="menu-icon">📈</span> Reports</a></li>
                 <li><a href="Inventory.html"><span class="menu-icon">📋</span> Inventory</a></li>
-                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/1e2e1826-31f9-4944-a2fd-4c288b977797/admin-dashboard.html#settings"><span class="menu-icon">⚙️</span> Settings</a></li>
+                <li><a href="https://dede3phc22dgx.cloudfront.net/creao2/2ab7bd66-1a8a-47d3-95bb-253d9aec738c/98710340-f0e1-7045-c5ba-ef6bbe01060c/2d1203d8-1be2-43a1-8ea2-fb430570e98a/admin-reports.html#"><span class="menu-icon">⚙️</span> Settings</a></li>
             </ul>
         </aside>
 
@@ -298,7 +288,6 @@
                         <div>
                             <div class="stat-title">Total Revenue</div>
                         </div>
-                        <div class="stat-icon">💰</div>
                     </div>
                     <div class="stat-value">$24,580</div>
                     <div class="stat-change">↑ 12% from last month</div>
@@ -309,7 +298,6 @@
                         <div>
                             <div class="stat-title">Total Orders</div>
                         </div>
-                        <div class="stat-icon">🛒</div>
                     </div>
                     <div class="stat-value">342</div>
                     <div class="stat-change">↑ 8% from last month</div>
@@ -320,7 +308,6 @@
                         <div>
                             <div class="stat-title">Total Products</div>
                         </div>
-                        <div class="stat-icon">📦</div>
                     </div>
                     <div class="stat-value">156</div>
                     <div class="stat-change negative">↓ 3 low stock items</div>
@@ -331,7 +318,6 @@
                         <div>
                             <div class="stat-title">Active Customers</div>
                         </div>
-                        <div class="stat-icon">👥</div>
                     </div>
                     <div class="stat-value">892</div>
                     <div class="stat-change">↑ 15% from last month</div>
@@ -340,7 +326,7 @@
 
             <!-- Low Stock Alert -->
             <div class="alert">
-                <div class="alert-title">⚠️ Low Stock Alert</div>
+                <div class="alert-title">Low Stock Alert</div>
                 <div>3 products are running low on stock. <a href="Inventory.html" style="color: #FDCA5D; font-weight: 600;">View inventory →</a></div>
             </div>
 
@@ -445,35 +431,35 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>🍖 Premium Grain-Free Dog Food</td>
+                            <td>Premium Grain-Free Dog Food</td>
                             <td>Dog Food</td>
                             <td>45 units</td>
                             <td>124 units</td>
                             <td>$5,330.76</td>
                         </tr>
                         <tr>
-                            <td>🧸 Interactive Squeaky Toy Set</td>
+                            <td>Interactive Squeaky Toy Set</td>
                             <td>Dog Toys</td>
-                            <td>12 units <span style="color: #ff9800; font-weight: 600;">⚠️ Low</span></td>
+                            <td>12 units <span style="color: #ff9800; font-weight: 600;">Low</span></td>
                             <td>98 units</td>
                             <td>$1,861.02</td>
                         </tr>
                         <tr>
-                            <td>🦴 Natural Dental Chew Sticks</td>
+                            <td>Natural Dental Chew Sticks</td>
                             <td>Dog Treats</td>
                             <td>67 units</td>
                             <td>87 units</td>
                             <td>$2,174.13</td>
                         </tr>
                         <tr>
-                            <td>🐱 Premium Cat Litter 20lb</td>
+                            <td>Premium Cat Litter 20lb</td>
                             <td>Cat Care</td>
-                            <td>8 units <span style="color: #ff9800; font-weight: 600;">⚠️ Low</span></td>
+                            <td>8 units <span style="color: #ff9800; font-weight: 600;">Low</span></td>
                             <td>76 units</td>
                             <td>$1,824.00</td>
                         </tr>
                         <tr>
-                            <td>🛏️ Orthopedic Dog Bed</td>
+                            <td>Orthopedic Dog Bed</td>
                             <td>Dog Accessories</td>
                             <td>23 units</td>
                             <td>54 units</td>
